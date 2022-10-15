@@ -9,7 +9,7 @@ const Stocks = () => {
         <>      
             {loading && <h2>Data is loading...</h2>}
             {error && <h2>{error}</h2>}
-            {data?<ParseData CSVData= {data} />:<p>No Data</p>}
+            {data && <ParseData CSVData= {data} />}
         </>
      );
 }
