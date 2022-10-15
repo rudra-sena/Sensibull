@@ -1,28 +1,22 @@
-table {
-    font-family: Roboto, sans-serif;    
-    table-layout: fixed;
-    width: 75%;
-    margin: 0 auto;
-  }
-  
-  table td {
-    border: 1px solid rgb(0, 0, 0);
-    padding: 8px;
-  }
-  
-  table tr{
-    background-color: #fff;
-  }
+.table-component{
+  background-color: #ececec;
+}
 
-  table tr:hover {
+.table-container{
+  margin: 0 auto;
+  width: 75%;
+}
+
+table tr:hover {
     cursor: pointer;
-    background-color: #E9E8FF;
-  }
-  
-  #table th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: center;
     background-color: #FF5722;
-    color: white;
-  }
+    color: rgb(255, 255, 255);
+    
+}
+
+
+  table tr {
+    text-align: center;
+    background-color: #fff;
+    color:rgb(0, 0, 0);
+}

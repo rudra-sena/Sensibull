@@ -2,9 +2,9 @@ import {useEffect,useMemo} from 'react';
 import { useNavigate } from "react-router-dom";
 import BootstrapTable from 'react-bootstrap-table-next';
 import filterFactory from 'react-bootstrap-table2-filter';
-import './Table.css'
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.css'
+import './Table.css'
 
 
 const Table = ({tableData,tableColumns,tableType}) => {
@@ -26,13 +26,17 @@ const Table = ({tableData,tableColumns,tableType}) => {
     
     return ( 
         <>
-          <BootstrapTable
-           bootstrap4
-            keyField={tableColumns[0]}
-            columns={columns}
-            data={data}
-            filter={filterFactory()}
-            />
+        <div className="table-component">
+            <div className="table-container">
+            <BootstrapTable
+            bootstrap4
+                keyField={tableColumns[0]}
+                columns={columns}
+                data={data}
+                filter={filterFactory()}
+                />
+            </div>
+        </div>
         </>
      );
 }
