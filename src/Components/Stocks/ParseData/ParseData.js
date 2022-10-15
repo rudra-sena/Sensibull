@@ -39,13 +39,11 @@ const ParseData = ({CSVData}) => {
           <div style={ { display: 'flex', flexDirection: 'column' } }>
             { filterElement }
             { column.text }
-               
           </div>
         );
       }
-
+      
     function fuzzySearch(query,data){
-        console.log(query,data);
         if (!query) {
             return data;
           }
