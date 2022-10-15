@@ -1,8 +1,15 @@
+import NotFound from '../../../Components/NotFound/NotFound'
 import Table from '../../Table/Table'
 
-const Prices = ({payload}) => {
+const Prices = ({data}) => {
 
-    const quotesArray=Object.values(payload)[0];
+    if(!data.success){
+        return(
+            <NotFound/>
+        )
+    }
+
+    const quotesArray=Object.values(data.payload)[0];
     const columns=Object.keys(quotesArray[0]);    
     
     const columnHeaders=columns.map((column) =>{
@@ -23,7 +30,7 @@ const Prices = ({payload}) => {
 
     return ( 
         <>
-            <h1>{Object.keys(payload)[0]}</h1>
+            <h1>{Object.keys(data.payload)[0]}</h1>
             <Table tableData={quotesArray} tableColumns={columnHeaders}  tableType="quotesTable"/>
         </>
      );

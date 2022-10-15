@@ -13,7 +13,7 @@ const Quotes = () => {
         <>
             {loading && <h2>Data is loading...</h2>}
             {error && <h2>{error}</h2>}
-            {data?<Prices payload={data.payload} id={id}/>:<p>No Data</p>}
+            {data && <Prices data={data} />}
         </>
      );
 }
