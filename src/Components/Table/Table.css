@@ -8,7 +8,6 @@ table {
   table td {
     border: 1px solid rgb(0, 0, 0);
     padding: 8px;
-    flex: 1;
   }
   
   table tr{
@@ -20,11 +19,10 @@ table {
     background-color: #E9E8FF;
   }
   
-  table th {
+  #table th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: center;
     background-color: #FF5722;
     color: white;
-    flex: 1;
   }
