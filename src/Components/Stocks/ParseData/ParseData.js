@@ -6,6 +6,7 @@ import Fuse from "fuse.js";
 
 const ParseData = ({CSVData}) => {
     
+    //Parsing CSV data to JSON
     const parsedData=(readString(CSVData,{
         header:true,
         skipEmptyLines:true
@@ -13,6 +14,7 @@ const ParseData = ({CSVData}) => {
     const stocksData=parsedData.data;
     const columns= Object.keys(stocksData[0]).filter((key) => key!=='Validtill');
 
+    //Defintion of columns array for Stocks table
     const columnHeaders=columns.map((column) =>{
         if(column==='Symbol' || column==='Name'){
             return {
@@ -34,6 +36,7 @@ const ParseData = ({CSVData}) => {
         }
     })
 
+    //Customization of column headers for including search filter
     function columnFormatter(column, colIndex, { filterElement }) {    
         return (
           <div style={ { display: 'flex', flexDirection: 'column' } }>
@@ -43,6 +46,7 @@ const ParseData = ({CSVData}) => {
         );
       }
       
+    //Fuzzy search implementation for Name and Symbol columns
     function fuzzySearch(query,data){
         if (!query) {
             return data;
@@ -59,6 +63,7 @@ const ParseData = ({CSVData}) => {
         }
         return finalResult;
     }
+    //Modifying the display of table header (Over riding default bootstrap table display)
     useEffect(()=>{
         const labels=document.querySelectorAll('span.sr-only');
         labels.forEach((label) => {

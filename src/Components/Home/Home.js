@@ -5,6 +5,7 @@ import stockAnimation from '../../lotties/stock-animation.json';
 
 const Home = () => {
 
+    //Lottie animation attributes
     const defaultOptions = {
         loop: true,
         autoplay: true,

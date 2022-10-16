@@ -10,13 +10,16 @@ import './Table.css'
 const Table = ({tableData,tableColumns,tableType}) => {
 
     const navigate = useNavigate();
+    //State for filtering expired rows
     const [updatedTableData,setUpdatedTableData] = useState(tableData)
 
+    //Memoizing table data for better performance
     const columns = useMemo(()=>tableColumns,[]);
     const data = useMemo(()=>updatedTableData,[updatedTableData]);
 
     useEffect(()=>{
 
+        //Redirecting to prices table for selected Stock 
         if(tableType === 'stocksTable'){
             const rows=document.querySelectorAll('tbody tr');
             rows.forEach((row)=>{
@@ -25,17 +28,19 @@ const Table = ({tableData,tableColumns,tableType}) => {
                 navigate(`/quotes/${id}`)
             })
         })}
+        //Filtering out prices that have reached the expiry data
         if(tableType === 'quotesTable'){
             if(updatedTableData.length>0){
                 setInterval(()=>{
                     
+                    //Setting current date-time in the required format of the table data
                     const date=new Date();
                     const now=(date.getUTCFullYear()+'-'+(date.getUTCMonth()+1)+'-'+date.getUTCDate()+' '
                             +date.getUTCHours()+':'+date.getUTCMinutes()+':'+date.getUTCSeconds());
+                    //Converting to standard UTC format and filtering expired rows
                     const newTableData=updatedTableData.filter((row)=>{
                         const formattedValidTill = Date.parse(row.valid_till);
-                        const formattedNow = Date.parse(now);
-                        //console.log(now);                        
+                        const formattedNow = Date.parse(now);                        
                         return (formattedValidTill>formattedNow)
                     })
                     setUpdatedTableData(newTableData);

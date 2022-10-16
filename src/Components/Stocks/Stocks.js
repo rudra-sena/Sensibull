@@ -4,6 +4,7 @@ import '../../Loading.css'
 
 const Stocks = () => {
 
+    //Fetching stocks data from instruments API
     const { data,loading,error} =useFetch("https://prototype.sbulltech.com/api/v2/instruments")
 
     return ( 

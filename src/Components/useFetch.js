@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useState,useEffect } from 'react';
 
+//Custom hook to perform fetch calls
 const useFetch = (url) => {
 
     const [data,setData] = useState(null);
@@ -9,6 +10,7 @@ const useFetch = (url) => {
     
     useEffect(()=>{
 
+        //Abort controller for cleanup function
         const abortFetch = new AbortController();
         setLoading(true);
         axios
@@ -27,7 +29,7 @@ const useFetch = (url) => {
                 setLoading(false);
             })
 
-            return () => abortFetch.abort();
+            return () => abortFetch.abort(); //Fetch aborted when component unmounts
     },[url]);
     
     return {data,loading,error};

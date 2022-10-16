@@ -11,7 +11,8 @@ const Prices = ({data}) => {
 
     const quotesArray=Object.values(data.payload)[0];
     const columns=Object.keys(quotesArray[0]);    
-    
+
+    //Defintion of columns array for prices table
     const columnHeaders=columns.map((column) =>{
         if(column==='time'){
             return {

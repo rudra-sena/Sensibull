@@ -5,6 +5,7 @@ import '../../../Loading.css'
 
 const Quotes = () => {
 
+    //Fetching price list from quotes API
     const {id} = useParams();
     const url= `https://prototype.sbulltech.com/api/v2/quotes/${id}`
 
