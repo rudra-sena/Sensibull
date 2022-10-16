@@ -23,7 +23,7 @@ const Home = () => {
                         <Lottie 
                             options={defaultOptions}
                             height={300}
-                            width={300}
+                            width={250}
                         />
                         <h4><b>Stocks</b></h4> 
                         <p>Click here to view the list of stocks.....</p> 
