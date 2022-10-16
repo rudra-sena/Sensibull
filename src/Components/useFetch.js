@@ -19,7 +19,7 @@ const useFetch = (url) => {
                 setData(res.data)
             })
             .catch((err)=>{
-                if(!(err.name === 'AbortError')){
+                if(!(err.name === 'CanceledError')){
                     setError(err);
                 }
             })
