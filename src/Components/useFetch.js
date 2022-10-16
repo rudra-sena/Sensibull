@@ -8,18 +8,26 @@ const useFetch = (url) => {
     const [error,setError] = useState(null);
     
     useEffect(()=>{
+
+        const abortFetch = new AbortController();
         setLoading(true);
         axios
-            .get(url)
+            .get(url,{
+                signal: abortFetch.signal
+            })
             .then((res)=>{
                 setData(res.data)
             })
             .catch((err)=>{
-                setError(err);
+                if(!(err.name === 'AbortError')){
+                    setError(err);
+                }
             })
             .finally(()=>{
                 setLoading(false);
             })
+
+            return () => abortFetch.abort();
     },[url]);
     
     return {data,loading,error};
